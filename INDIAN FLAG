@@ -1,0 +1,65 @@
+import turtle
+
+# Function to draw a rectangle with a given color
+def draw_rectangle(color, width, height):
+    turtle.begin_fill()
+    turtle.fillcolor(color)
+    for _ in range(2):
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
+    turtle.end_fill()
+
+# Function to draw the Ashoka Chakra
+def draw_chakra(radius):
+    turtle.penup()
+    turtle.goto(0, -radius)
+    turtle.pendown()
+    turtle.pensize(2)
+    turtle.pencolor("navy")
+    turtle.circle(radius)
+    
+    # Draw the 24 spokes
+    for _ in range(24):
+        turtle.penup()
+        turtle.goto(0, 0)
+        turtle.pendown()
+        turtle.forward(radius)
+        turtle.backward(radius)
+        turtle.right(15)
+
+# Setup the screen
+turtle.setup(width=800, height=600)
+turtle.bgcolor("black")
+turtle.speed(3)
+turtle.hideturtle()
+
+# Flag dimensions
+flag_width = 600
+flag_height = 360
+
+# Draw the saffron stripe
+turtle.penup()
+turtle.goto(-flag_width/2, flag_height/2)
+turtle.pendown()
+draw_rectangle("orange", flag_width, flag_height/3)
+
+# Draw the white stripe
+turtle.penup()
+turtle.goto(-flag_width/2, flag_height/6)
+turtle.pendown()
+draw_rectangle("white", flag_width, flag_height/3)
+
+# Draw the green stripe
+turtle.penup()
+turtle.goto(-flag_width/2, -flag_height/6)
+turtle.pendown()
+draw_rectangle("green", flag_width, flag_height/3)
+
+# Draw the Ashoka Chakra
+turtle.penup()
+turtle.goto(0, 0)
+turtle.pendown()
+draw_chakra(flag_height/6)
+turtle.done() #To stop the output windows
